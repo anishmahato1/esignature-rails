@@ -1,0 +1,16 @@
+# eSignature Rails API Project Progress
+
+## Completed Steps:
+1. [✓] Created a new Rails API-only application with PostgreSQL as the database
+   - Command: `rails new . --api --database=postgresql --skip-test`
+   - Created basic Rails API structure
+   - Set up with PostgreSQL database configuration
+
+## Next Steps:
+- Configure database connection
+- Implement the eSignature functionality
+
+## Notes:
+- The application is set up as an API-only Rails application
+- Using PostgreSQL as the database
+- Tests are skipped as per requirements
