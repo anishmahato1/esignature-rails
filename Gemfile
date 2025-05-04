@@ -43,5 +43,10 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Linting and code formatting
+  gem "rubocop", "~> 1.62", require: false
+  gem "rubocop-rails", "~> 2.24", require: false
+  gem "rubocop-performance", "~> 1.20", require: false
 end
 
