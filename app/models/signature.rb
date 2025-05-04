@@ -1,5 +1,6 @@
 class Signature < ApplicationRecord
   ACCEPTED_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/jpg'].freeze
+  MAX_IMAGE_SIZE = 2.megabytes
 
   belongs_to :user
   has_many :document_signatures, dependent: :destroy
@@ -10,9 +11,9 @@ class Signature < ApplicationRecord
   validates :image, attached: true,
                     content_type: ACCEPTED_CONTENT_TYPES,
                     size: {
-                      less_than: 2.megabytes,
+                      less_than: MAX_IMAGE_SIZE,
                       # TODO: use i18n
-                      message: 'Signature image must be less than 2MB'
+                      message: "Signature image must be less than #{MAX_IMAGE_SIZE}"
                     }
 
   before_create :set_signed_at
