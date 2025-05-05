@@ -6,18 +6,23 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
+  root 'home#index'
+
   namespace :api do
     namespace :v1 do
       post '/signup', to: 'users#create'
       post '/login', to: 'sessions#create'
 
       # User signatures
-      resources :signatures, only: [:index, :show, :create, :destroy]
+      resources :signatures, only: %i[index show create destroy]
 
       # Documents
-      resources :documents, only: [:index, :show, :create, :destroy] do
+      resources :documents, only: %i[index show create destroy] do
         member do
           get :download_signed
+          # Custom action for signing a document
+          post :sign_document, to: 'document_signatures#create'
+        end
       end
     end
   end
