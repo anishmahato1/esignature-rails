@@ -3,8 +3,9 @@ class Signature < ApplicationRecord
   MAX_IMAGE_SIZE = 2.megabytes
 
   belongs_to :user
-  has_many :document_signatures, dependent: :destroy
+  has_many :document_signatures, dependent: :nullify
   has_many :documents, through: :document_signatures
+
   has_one_attached :image
 
   validates :name, presence: true

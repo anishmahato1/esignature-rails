@@ -3,7 +3,7 @@ class DocumentSignature < ApplicationRecord
   validates :x_position, :y_position, :width, :height, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :document
-  belongs_to :signature
+  belongs_to :signature, optional: true
 
   before_create :set_signed_at
   after_create :apply_signature_to_document
