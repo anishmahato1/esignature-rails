@@ -23,6 +23,6 @@ class User < ApplicationRecord
   # Sets the name to the email if it's not set
   #
   def set_default_name
-    self.name ||= email.split('@').first
+    self.name ||= email&.split('@')&.first
   end
 end

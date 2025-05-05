@@ -3,6 +3,7 @@ module Api
     class UsersController < Api::BaseApiController
       skip_before_action :authenticate_user!
 
+      # POST /api/v1/sign_up
       def create
         # invalid records rescued from base_api_controller
         user = User.create!(user_params)
