@@ -4,6 +4,7 @@ module Api
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
 
     include RequestTracking
+    include ParameterSnakeCaseConverter
 
     before_action :authenticate_user!
 
