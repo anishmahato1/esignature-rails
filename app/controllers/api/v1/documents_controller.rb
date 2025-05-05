@@ -6,13 +6,14 @@ module Api
       # GET /api/v1/documents
       def index
         @documents = current_user.documents
+                                 .includes(:document_signature)
 
         render json: @documents
       end
 
       # GET /api/v1/documents/:id
       def show
-        render json: @document, include: [:document_signature]
+        render json: @document
       end
 
       # POST /api/v1/documents
@@ -42,7 +43,7 @@ module Api
       private
 
       def set_document
-        @document = current_user.documents.find(params[:id])
+        @document = current_user.documents.find params[:id]
       end
 
       def document_params
