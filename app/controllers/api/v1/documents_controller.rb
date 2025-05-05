@@ -6,6 +6,7 @@ module Api
       # GET /api/v1/documents
       def index
         @documents = current_user.documents
+                                 .with_attached_file
                                  .includes(:document_signature)
 
         render json: @documents
