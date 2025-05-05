@@ -23,8 +23,8 @@ module Api
       render_error('Not Authorized', :unauthorized) unless @current_user
     end
 
-    def not_found
-      render_error 'Record not found', :not_found
+    def not_found(exception)
+      render_error exception.message, :not_found
     end
 
     def unprocessable_entity(exception)
