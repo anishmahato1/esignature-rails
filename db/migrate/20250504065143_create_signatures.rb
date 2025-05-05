@@ -7,7 +7,6 @@ class CreateSignatures < ActiveRecord::Migration[7.1]
       t.float :y_position, null: false
       t.float :width, null: false
       t.float :height, null: false
-      t.datetime :signed_at
 
       t.timestamps
     end

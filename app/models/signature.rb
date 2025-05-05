@@ -15,12 +15,4 @@ class Signature < ApplicationRecord
                       # TODO: use i18n
                       message: "Signature image must be less than #{MAX_IMAGE_SIZE}"
                     }
-
-  before_create :set_signed_at
-
-  private
-
-  def set_signed_at
-    self.signed_at = Time.current
-  end
 end
