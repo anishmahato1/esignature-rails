@@ -30,6 +30,9 @@ module Api
       end
 
       def document_signature_params
+        # x_position and y_position are PDF points with origin at top left corner
+        # sent from FE
+        # width and height are in pixels for signature image
         params.permit(:page_number, :x_position, :y_position, :width, :height)
       end
 
