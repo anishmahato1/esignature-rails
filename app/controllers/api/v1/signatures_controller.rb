@@ -36,7 +36,7 @@ module Api
       private
 
       def set_signature
-        @signature = current_user.signatures.with_attached_image.find(params[:id])
+        @signature = current_user.signatures.find(params[:id])
       end
 
       def signature_params
