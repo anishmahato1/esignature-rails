@@ -42,12 +42,11 @@ module Api
       private
 
       def set_document
-        @document = current_user.documents.find!(params[:id])
+        @document = current_user.documents.find(params[:id])
       end
 
       def document_params
-        params.require(:document)
-              .permit(:title, :file)
+        params.permit(:title, :file)
       end
     end
   end

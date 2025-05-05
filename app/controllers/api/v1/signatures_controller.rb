@@ -35,11 +35,11 @@ module Api
       private
 
       def set_signature
-        @signature = current_user.signatures.find!(params[:id])
+        @signature = current_user.signatures.find(params[:id])
       end
 
       def signature_params
-        params.require(:signature).permit(:name, :image)
+        params.permit(:name, :image)
       end
     end
   end

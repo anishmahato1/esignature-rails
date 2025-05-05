@@ -2,7 +2,7 @@ class CreateDocuments < ActiveRecord::Migration[7.1]
   def change
     create_table :documents do |t|
       t.string :title, null: false
-      t.string :status, null: false, default: 'pending'
+      t.integer :status, null: false, default: 0
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
