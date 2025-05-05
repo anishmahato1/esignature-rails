@@ -10,7 +10,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/signup', to: 'users#create'
       post '/login', to: 'sessions#create'
-  # root "posts#index"
+
+      # User signatures
+      resources :signatures, only: [:index, :show, :create, :destroy]
+
+      # Documents
+      resources :documents, only: [:index, :show, :create, :destroy] do
+        member do
+          get :download_signed
+      end
     end
   end
 end
