@@ -22,7 +22,6 @@ class Document < ApplicationRecord
 
   has_one_attached :file
 
-
   #
   # Check if document can be signed
   #
