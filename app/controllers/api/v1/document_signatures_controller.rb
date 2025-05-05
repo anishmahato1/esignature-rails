@@ -1,6 +1,8 @@
 module Api
   module V1
     class DocumentSignaturesController < Api::BaseApiController
+      rescue_from SignatureServiceError, with: :handle_signature_service_error
+
       before_action :set_document
 
       # POST /api/v1/documents/:id/sign_document
@@ -16,10 +18,7 @@ module Api
           metadata: capture_request_metadata
         )
 
-        # create document signature with metadata captured only for this action
         @document.create_document_signature! creation_params
-
-        @document.reload
 
         render json: @document, status: :created
       end
@@ -32,6 +31,10 @@ module Api
 
       def document_signature_params
         params.permit(:page_number, :x_position, :y_position, :width, :height)
+      end
+
+      def handle_signature_service_error(exception)
+        render_error exception.message, :internal_server_error
       end
     end
   end

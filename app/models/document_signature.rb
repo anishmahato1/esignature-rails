@@ -17,11 +17,5 @@ class DocumentSignature < ApplicationRecord
   def apply_signature_to_document
     # embed the signature in the document
     ApplySignatureService.call(document)
-
-    document.signed!
-  rescue StandardError => e
-    document.failed!
-
-    raise e
   end
 end
